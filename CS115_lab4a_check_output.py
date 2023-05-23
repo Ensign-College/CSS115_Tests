@@ -34,14 +34,14 @@ def check_output(output, numbers):
 
 if __name__ == "__main__":
     # Compile
-    compile_command = "javac Lab4a/DessertShop.java"
+    compile_command = "javac src/DessertShop.java"
     compile_result = run_job(compile_command)
     if compile_result:
         print(f"Compilation error:\n{compile_result}")
     else:
-        run_command = "java -cp . Lab4a.DessertShop"
+        run_command = "java -cp . src.DessertShop"
         run_result = run_job(run_command)
         print(f"{run_result}")
 
         # Remove .class file
-        remove_main("Lab4a/DessertShop.class")
+        remove_main("src/DessertShop.class")
