@@ -1,13 +1,5 @@
-import subprocess
 import os
-
-
-def remove_main(file_path):
-    try:
-        os.remove(file_path)
-    except OSError as e:
-        print(f"Error deleting file: {e.filename} - {e.strerror}")
-
+import subprocess
 
 def run_job(cmd, input_data=None):
     current_directory = os.getcwd()
@@ -22,26 +14,34 @@ def run_job(cmd, input_data=None):
     )
     return ret.stdout
 
-
-def check_output(output, numbers):
-    for number in numbers:
-        if (
-            "The sum of the list of numbers is" or "The largest number in the list is"
-        ) not in output:
-            return False
-    return True
-
+def remove_class_files():
+    for file in os.listdir('.'):
+        if file.endswith('.class'):
+            os.remove(file)
 
 if __name__ == "__main__":
     # Compile
-    compile_command = "javac src/DessertShop.java"
+        # Get the current working directory
+    current_dir = os.getcwd()
+
+
+    src_dir = os.path.join(current_dir, "src")
+    os.chdir(src_dir)
+        # List the contents of the current directory
+    contents = os.listdir(src_dir)
+
+    # Print the contents
+    for item in contents:
+        print(item)
+    # Create the path to the "src" directory
+    compile_command = "javac DessertShop.java Order.java"
     compile_result = run_job(compile_command)
     if compile_result:
         print(f"Compilation error:\n{compile_result}")
     else:
-        run_command = "java -cp . src.DessertShop"
+        run_command = "java -cp . DessertShop"
         run_result = run_job(run_command)
         print(f"{run_result}")
 
-        # Remove .class file
-        remove_main("src/DessertShop.class")
+    # Remove .class files
+    remove_class_files()
