@@ -1,6 +1,17 @@
 import os
 import subprocess
 
+def check_output(output, expected_output):
+    # Remove all styling (whitespaces, newlines, and punctuation)
+    output = ''.join(e for e in output if e.isalnum())
+    expected_output = ''.join(e for e in expected_output if e.isalnum())
+
+    # Convert both strings to lowercase
+    output = output.lower()
+    expected_output = expected_output.lower()
+
+    # Check if the modified output matches the modified expected output
+    return output == expected_output    
 def run_job(cmd, input_data=None):
     current_directory = os.getcwd()
     ret = subprocess.run(
@@ -36,6 +47,8 @@ if __name__ == "__main__":
         run_command = "java -cp . DessertShop"
         run_result = run_job(run_command)
         print(f"{run_result}")
+        if check_ouput(run_result) == True: 
+            print("OK")
 
     # Remove .class files
     remove_class_files()
