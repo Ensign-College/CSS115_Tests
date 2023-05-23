@@ -47,7 +47,7 @@ if __name__ == "__main__":
         run_command = "java -cp . DessertShop"
         run_result = run_job(run_command)
         print(f"{run_result}")
-        if check_ouput(run_result) == True: 
+        if check_output(run_result) == True: 
             print("OK")
 
     # Remove .class files
