@@ -27,12 +27,6 @@ if __name__ == "__main__":
 
     src_dir = os.path.join(current_dir, "src")
     os.chdir(src_dir)
-        # List the contents of the current directory
-    contents = os.listdir(src_dir)
-
-    # Print the contents
-    for item in contents:
-        print(item)
     # Create the path to the "src" directory
     compile_command = "javac DessertShop.java Order.java"
     compile_result = run_job(compile_command)
