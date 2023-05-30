@@ -27,7 +27,7 @@ def run_java_junit_test(java_file, test_file, classpath):
         print("Compilation failed:")
         print(compile_process.stderr.decode("utf-8"))
         if "assertEquals" in compile_process.stderr.decode("utf-8"):
-            print(f"{Colors.RED}Your test cases are not compiling. Try changing {Colors.BG_WHITE}assertEquals to Assert.assertEquals or import correct Test Case library{Colors.RESET}")
+            print(f"{Colors.RED}Your test cases are not compiling. Try changing {Colors.BG_WHITE}assertEquals to Assert.assertEquals or import correct Test Case library. Or add public to your test methods{Colors.RESET}")
         return
 
     # Run JUnit test
